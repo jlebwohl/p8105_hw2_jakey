@@ -5,4 +5,23 @@ date: "2023-07-08"
 output: github_document
 ---
 
+Always load tidyverse.
+
+```{r}
+library(tidyverse)
+```
+
+## Problem 1
+
+Import the NYC transit data and retain relevant variables. Also clean it a little.
+
+```{r}
+nyc_subways =
+  read.csv("./data/NYC_Transit_Subway_Entrance_And_Exit_Data (1).csv") %>% 
+  janitor::clean_names() %>% 
+  select(line, station_name, station_latitude, station_longitude, (route1:route11), entry, vending, entrance_type, ada) %>% 
+  mutate(entry = recode(entry, "YES" = TRUE, "NO" = FALSE))
+```
+
+This dataset contains data for line, station, name, station latitude / longitude, routes served, entry, vending, entrance type, and ADA compliance for subway stations in NYC. So far I have cleaned the names of the variables, retained only certain variables, and changed the values of the variable 'entry' to be logical variables instead of characters. The data set is `r nrow(nyc_subways)` rows long and `r ncol(nyc_subways)` columns wide.
 
