@@ -1,0 +1,8 @@
+---
+title: "Homework 2"
+author: "Jakey Lebwohl"
+date: "2023-07-08"
+output: github_document
+---
+
+
